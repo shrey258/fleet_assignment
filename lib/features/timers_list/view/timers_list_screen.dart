@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../bloc/timer_bloc.dart';
 import '../widgets/timer_list_item.dart';
-import '../../create_timer/view/create_timer_screen.dart';
 
 class TimersListScreen extends StatelessWidget {
   const TimersListScreen({super.key});
@@ -16,11 +16,7 @@ class TimersListScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const CreateTimerScreen()),
-              );
-            },
+            onPressed: () => context.go('/create'),
           ),
         ],
       ),

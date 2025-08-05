@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../app/data/models/project_model.dart';
 import '../../../app/data/models/task_model.dart';
 import '../../../app/data/models/timer_model.dart';
-import '../../task_details/view/task_details_screen.dart';
+import 'package:go_router/go_router.dart';
 import '../bloc/timer_bloc.dart';
 
 class TimerListItem extends StatelessWidget {
@@ -33,16 +33,7 @@ class TimerListItem extends StatelessWidget {
     );
 
     return InkWell(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-              value: bloc,
-              child: TaskDetailsScreen(project: project, task: task),
-            ),
-          ),
-        );
-      },
+      onTap: () => context.go('/task/${task.id}'),
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Padding(

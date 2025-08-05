@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/data/models/task_model.dart';
 import '../../../app/data/models/timer_model.dart';
@@ -109,7 +110,7 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                             isFavorite: _isFavorite,
                           );
                           context.read<TimerBloc>().add(AddTimer(newTimer));
-                          Navigator.of(context).pop();
+                          context.pop();
                         }
                       },
                       child: const Text('Add Timer'),

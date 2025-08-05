@@ -1,9 +1,10 @@
-import 'package:fleet_assignment/app/data/repositories/timer_repository.dart';
-import 'package:fleet_assignment/app/theme/app_theme.dart';
-import 'package:fleet_assignment/features/timers_list/bloc/timer_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fleet_assignment/features/timers_list/view/timers_list_screen.dart';
+
+import 'app/data/repositories/timer_repository.dart';
+import 'app/router/app_router.dart';
+import 'app/theme/app_theme.dart';
+import 'features/timers_list/bloc/timer_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,11 +21,14 @@ class MyApp extends StatelessWidget {
         create: (context) => TimerBloc(
           RepositoryProvider.of<TimerRepository>(context),
         )..add(LoadTimers()),
-        child: MaterialApp(
-          title: 'Fleet Assignment',
-          theme: AppTheme.light,
-          home: const TimersListScreen(),
-        ),
+        child: Builder(builder: (context) {
+          final appRouter = AppRouter(context.read<TimerBloc>());
+          return MaterialApp.router(
+            title: 'Fleet Assignment',
+            theme: AppTheme.light,
+            routerConfig: appRouter.router,
+          );
+        }),
       ),
     );
   }
