@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fleet_assignment/app/widgets/app_background.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/data/models/project_model.dart';
@@ -33,7 +35,8 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppBackground(
+      child: Scaffold(
       appBar: AppBar(
         title: Text('${widget.project.name} - ${widget.task.name}'),
         bottom: TabBar(
@@ -51,22 +54,22 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> with SingleTicker
           _buildTimesheetsTab(),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildDetailsTab() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Task: ${widget.task.name}', style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Text('Project: ${widget.project.name}', style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 16),
-          const Text('Deadline: 2024-12-31', style: TextStyle(fontSize: 16)), // Static data
-          const SizedBox(height: 8),
-          const Text('Assigned to: John Doe', style: TextStyle(fontSize: 16)), // Static data
+          SizedBox(height: 16.h),
+          Text('Deadline: 2024-12-31', style: Theme.of(context).textTheme.bodyLarge), // Static data
+          SizedBox(height: 8.h),
+          Text('Assigned to: John Doe', style: Theme.of(context).textTheme.bodyLarge), // Static data
         ],
       ),
     );

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             final appRouter = AppRouter(context.read<TimerBloc>());
             return MaterialApp.router(
               title: 'Timers',
-              theme: AppTheme.light,
+              theme: AppTheme.dark,
               routerConfig: appRouter.router,
             );
           },

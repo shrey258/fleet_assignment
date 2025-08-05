@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fleet_assignment/app/widgets/app_background.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,7 +11,8 @@ class TimersListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppBackground(
+      child: Scaffold(
       appBar: AppBar(
         title: const Text('Timers'),
         actions: [
@@ -40,6 +42,6 @@ class TimersListScreen extends StatelessWidget {
           return const Center(child: Text('No timers found.'));
         },
       ),
-    );
+    ));
   }
 }

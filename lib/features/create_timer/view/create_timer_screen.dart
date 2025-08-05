@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fleet_assignment/app/widgets/app_background.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
@@ -24,7 +25,8 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppBackground(
+      child: Scaffold(
       appBar: AppBar(
         title: const Text('Create Timer'),
       ),
@@ -123,6 +125,6 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
           );
         },
       ),
-    );
+    ));
   }
 }
