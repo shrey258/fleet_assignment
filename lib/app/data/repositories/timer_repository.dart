@@ -23,6 +23,7 @@ class TimerRepository {
       taskId: '101',
       isFavorite: true,
       duration: 5100,
+      createdAt: DateTime.now(),
       status: TimerStatus.paused,
     ),
     TimerModel(
@@ -31,6 +32,7 @@ class TimerRepository {
       projectId: '2',
       taskId: '201',
       duration: 2700,
+      createdAt: DateTime.now(),
       status: TimerStatus.running,
     ),
   ];

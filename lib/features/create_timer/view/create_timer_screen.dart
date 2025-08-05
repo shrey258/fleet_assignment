@@ -205,6 +205,7 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                             projectId: _selectedProjectId!,
                             taskId: _selectedTaskId!,
                             isFavorite: _isFavorite,
+                            createdAt: DateTime.now(),
                           );
                           context.read<TimerBloc>().add(AddTimer(newTimer));
                           context.pop();
