@@ -1,4 +1,21 @@
 # Miscellaneous
+
+# Flutter/Dart specific
+.dart_tool/
+.packages
+build/
+
+# IDE-specific
+.idea/
+.vscode/
+
+# Misc
+*.iml
+*.ipr
+*.iws
+
+# Large media files
+demo.mov
 *.class
 *.log
 *.pyc

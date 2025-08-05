@@ -4,7 +4,7 @@ A beautifully designed and functional timer application built with Flutter. This
 
 ## 🚀 Demo
 
-<video src="demo.mov" width="100%" controls="true"></video>
+[Link to your hosted demo video will be here. You can replace this text with the URL after uploading the video to GitHub.]
 
 ## ✨ Features
 
