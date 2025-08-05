@@ -31,9 +31,10 @@ class TimerRepository {
       description: 'Fixing bugs reported by QA team.',
       projectId: '2',
       taskId: '201',
+      isFavorite: false,
       duration: 2700,
       createdAt: DateTime.now(),
-      status: TimerStatus.running,
+      status: TimerStatus.paused,
     ),
   ];
 
