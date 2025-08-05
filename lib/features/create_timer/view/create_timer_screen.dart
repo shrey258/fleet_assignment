@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../app/data/models/project_model.dart';
 import '../../../app/data/models/task_model.dart';
 import '../../../app/data/models/timer_model.dart';
 import '../../timers_list/bloc/timer_bloc.dart';
