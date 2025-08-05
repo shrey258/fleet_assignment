@@ -26,7 +26,6 @@ class TimersListScreen extends StatelessWidget {
               ),
               child: IconButton(
                 padding: EdgeInsets.all(8.r),
-                constraints: BoxConstraints(minWidth: 48.w, minHeight: 48.h),
                 icon: const Icon(Icons.add),
                 onPressed: () => context.go('/create'),
               ),
