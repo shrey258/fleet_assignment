@@ -47,44 +47,66 @@ class TimerListItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(timer.description, style: Theme.of(context).textTheme.titleMedium),
+                      Text(
+                        timer.description,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       SizedBox(height: 8.h),
-                      Text('${project.name} - ${task.name}', style: Theme.of(context).textTheme.bodySmall),
+                      Text(
+                        '${project.name} - ${task.name}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(width: 16.w),
-                Text(
-                  _formatDuration(timer.duration),
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
                 if (timer.status != TimerStatus.stopped)
-                  Row(
-                    children: [
-                      IconButton(
-                        iconSize: 36.r,
-                        icon: Icon(timer.status == TimerStatus.running ? Icons.pause_circle_filled : Icons.play_circle_filled, color: Theme.of(context).primaryColor),
-                        onPressed: () {
-                          if (timer.status == TimerStatus.running) {
-                            bloc.add(PauseTimer(timer.id));
-                          } else {
-                            bloc.add(StartTimer(timer.id));
-                          }
-                        },
+                  GestureDetector(
+                    onTap: () {
+                      if (timer.status == TimerStatus.running) {
+                        bloc.add(PauseTimer(timer.id));
+                      } else {
+                        bloc.add(StartTimer(timer.id));
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(64.r),
                       ),
-                      IconButton(
-                        iconSize: 36.r,
-                        icon: const Icon(Icons.stop_circle_outlined, color: Colors.red),
-                        onPressed: () {
-                          bloc.add(StopTimer(timer.id));
-                        },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _formatDuration(timer.duration),
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: const Color(0xFF0C1D4D),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          Icon(
+                            timer.status == TimerStatus.running
+                                ? Icons.pause
+                                : Icons.play_arrow,
+                            size: 24.r,
+                            color: const Color(0xFF0C1D4D),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   )
                 else
                   Padding(
                     padding: EdgeInsets.only(right: 16.w),
-                    child: Text('Completed', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green, fontWeight: FontWeight.bold)),
+                    child: Text(
+                      'Completed',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
               ],
             ),
@@ -97,9 +119,14 @@ class TimerListItem extends StatelessWidget {
   String _formatDuration(int totalSeconds) {
     final duration = Duration(seconds: totalSeconds);
     String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    return '$hours:$minutes:$seconds';
+    if (duration.inHours >= 1) {
+      final hours = twoDigits(duration.inHours);
+      final minutes = twoDigits(duration.inMinutes.remainder(60));
+      return '$hours:$minutes';
+    } else {
+      final minutes = twoDigits(duration.inMinutes.remainder(60));
+      final seconds = twoDigits(duration.inSeconds.remainder(60));
+      return '$minutes:$seconds';
+    }
   }
 }
