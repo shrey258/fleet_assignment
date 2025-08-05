@@ -10,7 +10,7 @@ class TimerModel {
   final String projectId;
   final String taskId;
   final bool isFavorite;
-  final Duration duration;
+  final int duration;
   final TimerStatus status;
 
   TimerModel({
@@ -19,7 +19,7 @@ class TimerModel {
     required this.projectId,
     required this.taskId,
     this.isFavorite = false,
-    this.duration = Duration.zero,
+    this.duration = 0,
     this.status = TimerStatus.paused,
   });
 
@@ -29,7 +29,7 @@ class TimerModel {
     String? projectId,
     String? taskId,
     bool? isFavorite,
-    Duration? duration,
+    int? duration,
     TimerStatus? status,
   }) {
     return TimerModel(

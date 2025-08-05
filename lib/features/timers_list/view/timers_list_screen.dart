@@ -35,7 +35,7 @@ class TimersListScreen extends StatelessWidget {
             );
           }
           if (state is TimerLoadFailure) {
-            return Center(child: Text('Failed to load timers: ${state.error}'));
+            return Center(child: Text('Failed to load timers: ${state.message}'));
           }
           return const Center(child: Text('No timers found.'));
         },

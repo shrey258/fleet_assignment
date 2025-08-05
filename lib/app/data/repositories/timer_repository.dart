@@ -22,7 +22,7 @@ class TimerRepository {
       projectId: '1',
       taskId: '101',
       isFavorite: true,
-      duration: const Duration(hours: 1, minutes: 25),
+      duration: 5100,
       status: TimerStatus.paused,
     ),
     TimerModel(
@@ -30,7 +30,7 @@ class TimerRepository {
       description: 'Fixing bugs reported by QA team.',
       projectId: '2',
       taskId: '201',
-      duration: const Duration(minutes: 45),
+      duration: 2700,
       status: TimerStatus.running,
     ),
   ];
@@ -43,6 +43,11 @@ class TimerRepository {
   Future<List<TaskModel>> getTasksForProject(String projectId) async {
     await Future.delayed(const Duration(milliseconds: 300));
     return _tasks.where((task) => task.projectId == projectId).toList();
+  }
+
+  Future<List<TaskModel>> getTasks() async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return _tasks;
   }
 
   Future<List<TimerModel>> getTimers() async {

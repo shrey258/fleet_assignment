@@ -54,3 +54,12 @@ class StopTimer extends TimerEvent {
   @override
   List<Object> get props => [timerId];
 }
+
+class _TimerTicked extends TimerEvent {
+  final String timerId;
+
+  const _TimerTicked(this.timerId);
+
+  @override
+  List<Object> get props => [timerId];
+}

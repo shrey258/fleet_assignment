@@ -28,10 +28,10 @@ class TimerLoadSuccess extends TimerState {
 }
 
 class TimerLoadFailure extends TimerState {
-  final String error;
+  final String message;
 
-  const TimerLoadFailure(this.error);
+  const TimerLoadFailure(this.message);
 
   @override
-  List<Object> get props => [error];
+  List<Object> get props => [message];
 }

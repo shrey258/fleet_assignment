@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/data/repositories/timer_repository.dart';
 import 'app/router/app_router.dart';
 import 'app/theme/app_theme.dart';
+import 'app/ticker.dart';
 import 'features/timers_list/bloc/timer_bloc.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       child: BlocProvider(
         create: (context) => TimerBloc(
           RepositoryProvider.of<TimerRepository>(context),
+          const Ticker(),
         )..add(LoadTimers()),
         child: Builder(builder: (context) {
           final appRouter = AppRouter(context.read<TimerBloc>());

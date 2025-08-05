@@ -90,7 +90,8 @@ class TimerListItem extends StatelessWidget {
     );
   }
 
-  String _formatDuration(Duration duration) {
+  String _formatDuration(int totalSeconds) {
+    final duration = Duration(seconds: totalSeconds);
     String twoDigits(int n) => n.toString().padLeft(2, '0');
     final hours = twoDigits(duration.inHours);
     final minutes = twoDigits(duration.inMinutes.remainder(60));
