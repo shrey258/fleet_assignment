@@ -39,77 +39,133 @@ class TimerListItem extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: GlassContainer(
-          child: Padding(
-            padding: EdgeInsets.all(16.r),
-            child: Row(
-              children: [
-                Expanded(
+          child: Row(
+            children: [
+              // Amber vertical bar
+              Container(
+                width: 4.w,
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+              ),
+              SizedBox(width: 16.w),
+              // Timer details column
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        timer.description,
-                        style: Theme.of(context).textTheme.titleMedium,
+                      // Task name with star icon
+                      Row(
+                        children: [
+                          Icon(Icons.star, size: 20.sp, color: Colors.white),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                            child: Text(
+                              timer.description,
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 8.h),
-                      Text(
-                        '${project.name} - ${task.name}',
-                        style: Theme.of(context).textTheme.bodySmall,
+                      // Project name with briefcase icon
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.work_outline,
+                            size: 20.sp,
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                            child: Text(
+                              '${project.name} - ${task.name}',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8.h),
+                      // Deadline with clock icon
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.access_time,
+                            size: 20.sp,
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          SizedBox(width: 8.w),
+                          Text(
+                            'Deadline 07/20/2023',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: 16.w),
-                if (timer.status != TimerStatus.stopped)
-                  GestureDetector(
-                    onTap: () {
-                      if (timer.status == TimerStatus.running) {
-                        bloc.add(PauseTimer(timer.id));
-                      } else {
-                        bloc.add(StartTimer(timer.id));
-                      }
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(64.r),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            _formatDuration(timer.duration),
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(
-                                  color: const Color(0xFF0C1D4D),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          Icon(
-                            timer.status == TimerStatus.running
-                                ? Icons.pause
-                                : Icons.play_arrow,
-                            size: 24.r,
-                            color: const Color(0xFF0C1D4D),
-                          ),
-                        ],
-                      ),
+              ),
+              SizedBox(width: 16.w),
+              if (timer.status != TimerStatus.stopped)
+                GestureDetector(
+                  onTap: () {
+                    if (timer.status == TimerStatus.running) {
+                      bloc.add(PauseTimer(timer.id));
+                    } else {
+                      bloc.add(StartTimer(timer.id));
+                    }
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 8.h,
                     ),
-                  )
-                else
-                  Padding(
-                    padding: EdgeInsets.only(right: 16.w),
-                    child: Text(
-                      'Completed',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(64.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          _formatDuration(timer.duration),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                color: const Color(0xFF0C1D4D),
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Icon(
+                          timer.status == TimerStatus.running
+                              ? Icons.pause
+                              : Icons.play_arrow,
+                          size: 24.r,
+                          color: const Color(0xFF0C1D4D),
+                        ),
+                      ],
                     ),
                   ),
-              ],
-            ),
+                )
+              else
+                Padding(
+                  padding: EdgeInsets.only(right: 16.w),
+                  child: Text(
+                    'Completed',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              SizedBox(width: 16.w),
+            ],
           ),
         ),
       ),
