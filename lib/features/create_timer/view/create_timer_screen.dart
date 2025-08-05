@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,7 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
               : state.tasks.where((t) => t.projectId == _selectedProjectId).toList();
 
           return Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.r),
             child: Form(
               key: _formKey,
               child: Column(
@@ -62,7 +63,7 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                     },
                     validator: (value) => value == null ? 'Please select a project' : null,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   DropdownButtonFormField<String>(
                     value: _selectedTaskId,
                     hint: const Text('Select Task'),
@@ -79,13 +80,13 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                     },
                     validator: (value) => value == null ? 'Please select a task' : null,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Description'),
                     onSaved: (value) => _description = value ?? '',
                     validator: (value) => (value?.isEmpty ?? true) ? 'Please enter a description' : null,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   CheckboxListTile(
                     title: const Text('Favorite'),
                     value: _isFavorite,

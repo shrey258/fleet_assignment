@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/data/models/project_model.dart';
@@ -35,9 +36,9 @@ class TimerListItem extends StatelessWidget {
     return InkWell(
       onTap: () => context.go('/task/${task.id}'),
       child: Card(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.r),
           child: Row(
             children: [
               Expanded(
@@ -45,12 +46,12 @@ class TimerListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(timer.description, style: Theme.of(context).textTheme.titleMedium),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text('${project.name} - ${task.name}', style: Theme.of(context).textTheme.bodySmall),
                   ],
                 ),
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: 16.w),
               Text(
                 _formatDuration(timer.duration),
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
@@ -59,7 +60,7 @@ class TimerListItem extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                      iconSize: 36,
+                      iconSize: 36.r,
                       icon: Icon(timer.status == TimerStatus.running ? Icons.pause_circle_filled : Icons.play_circle_filled, color: Theme.of(context).primaryColor),
                       onPressed: () {
                         if (timer.status == TimerStatus.running) {
@@ -70,7 +71,7 @@ class TimerListItem extends StatelessWidget {
                       },
                     ),
                     IconButton(
-                      iconSize: 36,
+                      iconSize: 36.r,
                       icon: const Icon(Icons.stop_circle_outlined, color: Colors.red),
                       onPressed: () {
                         bloc.add(StopTimer(timer.id));
@@ -80,8 +81,8 @@ class TimerListItem extends StatelessWidget {
                 )
               else
                 Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Text('Completed', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),
+                  padding: EdgeInsets.only(right: 16.w),
+                  child: Text('Completed', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green, fontWeight: FontWeight.bold)),
                 ),
             ],
           ),

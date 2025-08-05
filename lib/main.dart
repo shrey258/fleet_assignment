@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app/data/repositories/timer_repository.dart';
 import 'app/router/app_router.dart';
@@ -23,14 +24,19 @@ class MyApp extends StatelessWidget {
           RepositoryProvider.of<TimerRepository>(context),
           const Ticker(),
         )..add(LoadTimers()),
-        child: Builder(builder: (context) {
-          final appRouter = AppRouter(context.read<TimerBloc>());
-          return MaterialApp.router(
-            title: 'Fleet Assignment',
-            theme: AppTheme.light,
-            routerConfig: appRouter.router,
-          );
-        }),
+        child: ScreenUtilInit(
+          designSize: const Size(360, 690),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            final appRouter = AppRouter(context.read<TimerBloc>());
+            return MaterialApp.router(
+              title: 'Timers',
+              theme: AppTheme.light,
+              routerConfig: appRouter.router,
+            );
+          },
+        ),
       ),
     );
   }
