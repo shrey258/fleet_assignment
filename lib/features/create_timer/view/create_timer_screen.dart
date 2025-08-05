@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 import 'package:go_router/go_router.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 import '../../../app/data/models/task_model.dart';
 import '../../../app/data/models/timer_model.dart';
@@ -48,13 +49,52 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DropdownButtonFormField<String>(
+                  DropdownButtonFormField2<String>(
                     value: _selectedProjectId,
                     hint: const Text('Select Project'),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                    ),
+                    dropdownStyleData: DropdownStyleData(
+                      maxHeight: 300.h,
+                      width: 361.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: const Color(0xFF0C1D4D),
+                        border: Border.all(color: const Color(0x29FFFFFF), width: 2),
+                      ),
+                      offset: const Offset(0, -5),
+                    ),
+                    iconStyleData: IconStyleData(
+                      icon: Icon(Icons.arrow_drop_down, color: Colors.white.withOpacity(0.7)),
+                    ),
+                    isExpanded: true,
+                    buttonStyleData: const ButtonStyleData(
+                      padding: EdgeInsets.zero,
+                    ),
+                    menuItemStyleData: MenuItemStyleData(
+                      height: 56.h,
+                    ),
                     items: projects.map((project) {
-                      return DropdownMenuItem(
+                      return DropdownMenuItem<String>(
                         value: project.id,
-                        child: Text(project.name),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 0.w),
+                          child: Text(
+                            project.name,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
                       );
                     }).toList(),
                     onChanged: (value) {
@@ -66,13 +106,52 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                     validator: (value) => value == null ? 'Please select a project' : null,
                   ),
                   SizedBox(height: 16.h),
-                  DropdownButtonFormField<String>(
+                  DropdownButtonFormField2<String>(
                     value: _selectedTaskId,
                     hint: const Text('Select Task'),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                    ),
+                    dropdownStyleData: DropdownStyleData(
+                      maxHeight: 300.h,
+                      width: 361.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: const Color(0xFF0C1D4D),
+                        border: Border.all(color: const Color(0x29FFFFFF), width: 2),
+                      ),
+                      offset: const Offset(0, -5),
+                    ),
+                    iconStyleData: IconStyleData(
+                      icon: Icon(Icons.arrow_drop_down, color: Colors.white.withOpacity(0.7)),
+                    ),
+                    isExpanded: true,
+                    buttonStyleData: const ButtonStyleData(
+                      padding: EdgeInsets.zero,
+                    ),
+                    menuItemStyleData: MenuItemStyleData(
+                      height: 56.h,
+                    ),
                     items: tasks.map((task) {
-                      return DropdownMenuItem(
+                      return DropdownMenuItem<String>(
                         value: task.id,
-                        child: Text(task.name),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 0.w),
+                          child: Text(
+                            task.name,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
                       );
                     }).toList(),
                     onChanged: (value) {
@@ -84,7 +163,22 @@ class _CreateTimerScreenState extends State<CreateTimerScreen> {
                   ),
                   SizedBox(height: 16.h),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: 'Description'),
+                    decoration: InputDecoration(
+                      labelText: 'Description',
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+                      ),
+                      isDense: false,
+                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                     onSaved: (value) => _description = value ?? '',
                     validator: (value) => (value?.isEmpty ?? true) ? 'Please enter a description' : null,
                   ),

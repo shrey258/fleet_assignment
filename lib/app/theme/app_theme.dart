@@ -16,74 +16,61 @@ class AppTheme {
           size: 24.r,
         ),
         titleTextStyle: GoogleFonts.inter(
+          fontSize: 22.sp,
           color: Colors.white,
-          fontSize: 20.sp,
-          fontWeight: FontWeight.w500,
+          height: 28 / 22,
+          fontWeight: FontWeight.bold,
         ),
       ),
       textTheme: GoogleFonts.interTextTheme(baseTheme.textTheme).copyWith(
-        displayLarge: TextStyle(fontSize: 57.sp, height: 64 / 57, color: Colors.white),
-        displayMedium: TextStyle(fontSize: 45.sp, height: 52 / 45, color: Colors.white),
-        displaySmall: TextStyle(fontSize: 36.sp, height: 44 / 36, color: Colors.white),
-        headlineLarge: TextStyle(fontSize: 32.sp, height: 40 / 32, color: Colors.white),
-        headlineMedium: TextStyle(fontSize: 28.sp, height: 36 / 28, color: Colors.white),
-        headlineSmall: TextStyle(fontSize: 24.sp, height: 32 / 24, color: Colors.white),
-        titleLarge: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w500, height: 28 / 22, color: Colors.white),
-        titleMedium: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, height: 24 / 16, letterSpacing: 0.15, color: Colors.white.withOpacity(0.87)),
-        titleSmall: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, height: 20 / 14, letterSpacing: 0.1, color: Colors.white.withOpacity(0.87)),
+        displayLarge: TextStyle(fontSize: 42.sp, height: 48 / 42, color: Colors.white),
+        displayMedium: TextStyle(fontSize: 36.sp, height: 44 / 36, color: Colors.white),
+        displaySmall: TextStyle(fontSize: 28.sp, height: 36 / 28, color: Colors.white),
+        headlineLarge: TextStyle(fontSize: 24.sp, height: 32 / 24, color: Colors.white),
+        headlineMedium: TextStyle(fontSize: 20.sp, height: 28 / 20, color: Colors.white),
+        headlineSmall: TextStyle(fontSize: 18.sp, height: 24 / 18, color: Colors.white),
+        titleLarge: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, height: 24 / 18, color: Colors.white),
+        titleMedium: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, height: 20 / 14, letterSpacing: 0.15, color: Colors.white.withOpacity(0.87)),
+        titleSmall: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, height: 16 / 12, letterSpacing: 0.1, color: Colors.white.withOpacity(0.87)),
         labelLarge: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, height: 20 / 14, letterSpacing: 0.1, color: Colors.white.withOpacity(0.7)),
         labelMedium: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, height: 16 / 12, letterSpacing: -0.5, color: Colors.white.withOpacity(0.7)),
         labelSmall: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w500, height: 16 / 11, letterSpacing: 0.5, color: Colors.white.withOpacity(0.7)),
-        bodyLarge: TextStyle(fontSize: 16.sp, height: 24 / 16, letterSpacing: 0.15, color: Colors.white.withOpacity(0.87)),
-        bodyMedium: TextStyle(fontSize: 14.sp, height: 20 / 14, letterSpacing: 0.25, color: Colors.white.withOpacity(0.87)),
+        bodyLarge: TextStyle(fontSize: 14.sp, height: 20 / 14, letterSpacing: 0.15, color: Colors.white.withOpacity(0.87)),
+        bodyMedium: TextStyle(fontSize: 13.sp, height: 18 / 13, letterSpacing: 0.25, color: Colors.white.withOpacity(0.87)),
         bodySmall: TextStyle(fontSize: 12.sp, height: 16 / 12, letterSpacing: 0.4, color: Colors.white.withOpacity(0.7)),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF214ECC).withOpacity(0.8),
+          backgroundColor: const Color(0x14FFFFFF),
           foregroundColor: Colors.white,
+          elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(16.r),
+            side: BorderSide(color: Colors.white.withOpacity(0.2), width: 1.5),
           ),
           padding: EdgeInsets.symmetric(vertical: 16.h),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white.withOpacity(0.1),
+        fillColor: const Color(0x14FFFFFF),
         hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
         labelStyle: TextStyle(color: Colors.white.withOpacity(0.87)),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
+        ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Color(0x29FFFFFF), width: 2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(color: Colors.white.withOpacity(0.5), width: 2),
         ),
       ),
-      dropdownMenuTheme: DropdownMenuThemeData(
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.1),
-          hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
-          labelStyle: TextStyle(color: Colors.white.withOpacity(0.87)),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
-            borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
-            borderSide: const BorderSide(color: Colors.white),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-        ),
-      ),
+      
        checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
@@ -111,6 +98,7 @@ class AppTheme {
         unselectedLabelColor: Colors.white.withOpacity(0.7),
         indicatorSize: TabBarIndicatorSize.label,
       ),
+      
     );
   }
 
